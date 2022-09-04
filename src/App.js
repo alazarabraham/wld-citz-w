@@ -55,7 +55,7 @@ function App() {
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/profile/:id" element={<UserPage userId={userId} avatar={avatar} getLoggedInUser={getUser}/>}/>
-            <Route path="countries" element={<Countries/>}/>
+            <Route path="countries" element={<Countries userId={userId}/>}/>
             <Route path="/country/:id" element={<Country/>}/>
             <Route path="/books" element={<Books userId={userId}/>}/>
             <Route path="/book/:id" element={<Book userId={userId}/>}/>

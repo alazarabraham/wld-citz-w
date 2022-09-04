@@ -67,10 +67,13 @@ function Country(){
       };
 
       const imageStyle = {maxWidth: "160px"};
+      const imageDivStyle = {maxWidth: "400px",maxHeight: "400px"};
 
 
     return(
+        
         <div className="row justify-content-center mb-5">
+            
             <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-5">
                 <h4 className="fs-2">Countries</h4>
                 <small>Explore <span className="fw-bold">{country.name}'s</span> books, films, and history</small>
@@ -82,15 +85,15 @@ function Country(){
                 </nav>
                 <div className="row justify-content-center mt-4">
                     <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-4 mt-4">
-                        <small className="lead d-block">{country.name}</small>
-                        <small className="d-block"><AiFillStar/> {country.capital}</small>
-                        <small className="d-block"><GrLanguage/> {country.language}</small>
+                        <small className="display-3 d-block">{country.name}</small>
+                        <small className="d-block fs-6"><AiFillStar/> {country.capital}</small>
+                        <small className="d-block fs-6"><GrLanguage/> {country.language}</small>
                     </div>
-                    <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-4">
-                        <img src={country.flag} className="w-100 mw-100"/>
+                    <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-4" style={imageDivStyle}>
+                        <img src={country.flag} className="w-100 mw-100 "/>
                     </div>
                 </div>
-                <h1 className="lead mt-4">{countryBooks.length > 0 ? `Books from ${country.name}` :`No Books from ${country.name}`} </h1>
+                <h1 className="lead mt-4">{countryBooks.length > 0 ? `Books from ${country.name} (${countryBooks.length})` :`No Books from ${country.name} (0)`} </h1>
                 <div className="row justify-content-center">
                     <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                     <Carousel className="mt-4 d-flex" responsive={responsive}>
@@ -100,7 +103,8 @@ function Country(){
                     </Carousel>
                     </div>
                 </div>
-                <h1 className="lead mt-4">{countryFilms.length > 0 ? `Films from ${country.name}` : `No Films from ${country.name}`} </h1>
+   
+                <h1 className="lead mt-4">{countryFilms.length > 0 ? `Films from ${country.name} (${countryFilms.length})` : `No Films from ${country.name} (0)`} </h1>
                 <div className="row justify-content-center">
                     <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                     <Carousel className="mt-4 d-flex" responsive={responsive}>

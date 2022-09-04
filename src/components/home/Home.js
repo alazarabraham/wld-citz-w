@@ -93,7 +93,7 @@ function Home(){
         <div className="row justify-content-center mb-5">
             
             <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-5" >
-                <h1 className='fs-2'>World Citizen</h1>
+                <h1 className='fs-2'>World Citizen <img className='px-3' src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1280px-World_map_-_low_resolution.svg.png' width="75"/></h1>
                 <small>A space to share across cultures</small>
                 <div style={width} class="d-flex justify-content-between">
                     <h1 className='lead mt-4'>Countries</h1>
@@ -102,7 +102,7 @@ function Home(){
                 <Carousel className="mt-4 d-flex" responsive={responsive}>
                         {countries.map((country, i)=>(
                             <Link className='text-decoration-none' to={`/country/${country.id}`}>
-                                <div className='rounded d-flex align-items-end' style={countryImageStyle(country.banner_img)}>
+                                <div className='cardHover rounded d-flex align-items-end' style={countryImageStyle(country.banner_img)}>
                                     <h3 className='px-3 text-decoration-none text-white'>{country.name} <img className='px-2' src={country.flag} width="35"/></h3>
                                 </div>
                                 {/* <img src={country.flag} height="250" style={imageStyle}/> */}
@@ -116,7 +116,7 @@ function Home(){
                 <Carousel className="mt-4 position-relative" responsive={responsive}>
                     {books.map((book, i)=>(
                         <Link className='text-decoration-none d-flex flex-row bd-highlight mb-3' to={`/book/${book.id}`}>
-                            <div className='d-flex align-items-start flex-column bd-highlight mb-3' style={bookImageStyle(book.cover)}>
+                            <div className=' cardHover d-flex align-items-start flex-column bd-highlight mb-3' style={bookImageStyle(book.cover)}>
                                 <div class="mb-auto px-2 bd-highlight"></div>
                                 <div class="px-2 bd-highlight text-decoration-none text-white lead">{book.title} <img className='px-2' src={book.flag} width="35"/></div>
                                 <div class="px-2 bd-highlight text-decoration-none text-white fs-6">{book.first_name} {book.last_name}</div>
@@ -134,7 +134,7 @@ function Home(){
                 </div>                
                 <Carousel className="mt-4 position-relative" responsive={responsive}>
                     {films.map((film, i)=>(
-                        <Link className='text-decoration-none d-flex flex-row bd-highlight mb-3' to={`/film/${film.id}`}>
+                        <Link className='cardHover text-decoration-none d-flex flex-row bd-highlight mb-3' to={`/film/${film.id}`}>
                             <div className='d-flex align-items-start flex-column bd-highlight mb-3' style={bookImageStyle(film.poster)}>
                                 <div class="mb-auto px-2 bd-highlight"></div>
                                 <div class="px-2 bd-highlight text-decoration-none text-white lead">{film.title} <img className='px-2' src={film.flag} width="35"/></div>
