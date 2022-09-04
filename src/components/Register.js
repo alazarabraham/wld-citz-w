@@ -81,9 +81,9 @@ function Register(){
     const textareaStyle = {height: "100px"};
 
     return(
-        <div className="row justify-content-center mt-5" style={loginFormStyle}>
+        <div className="row justify-content-center mt-5 mb-5" style={loginFormStyle}>
             
-            <div className="col-10 col-sm-8 col-md-8 col-lg-8 col-xl-8 border" >
+            <div className="col-10 col-sm-8 col-md-8 col-lg-8 col-xl-8 border  mb-5" >
                 <div align="center">
                     <h4 className="lead mt-4">Register</h4>
                     <small>
@@ -92,7 +92,7 @@ function Register(){
                     </small>
                 </div>
                 <form onSubmit={handleSubmit}>
-                    <div className="row justify-content-center mt-4">
+                    <div className="row justify-content-center mt-4  mb-5">
                         <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-4" >
                             <div className="form-floating mb-3">
                                 <input type="text" className="form-control" id="floatingInput"  placeholder="First name" value={first_name} onChange={(e)=> set_First_name(e.target.value)}/>
@@ -157,7 +157,7 @@ function Register(){
                             </div>
                         </div>
                         <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mt-4" align="center">
-                            <button type="submit" className="btn btn-outline-dark btn-block">Login</button>
+                            <button type="submit" className="btn btn-outline-dark btn-block">Register</button>
                             <small className="d-block mt-3">Already have an account? <a href="/login">Login</a></small>
                         </div>
                     </div>

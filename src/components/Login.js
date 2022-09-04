@@ -27,7 +27,7 @@ function Login(){
     
     }
     return(
-        <div className="row justify-content-center mt-5" style={loginFormStyle}>
+        <div className="row justify-content-center mb-5 mt-5" style={loginFormStyle}>
             <div className="col-10 col-sm-8 col-md-5 col-lg-5 col-xl-4 border" align="center">
                 <GiBlackFlag size={25} className="mt-4"/>
                 <h4 className="lead mt-4">Sign in</h4>

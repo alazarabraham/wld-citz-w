@@ -22,7 +22,7 @@ function Countries(){
 
     function getBannerStyle(url){
         return {
-            height: "150px",
+            height: "190px",
             backgroundImage: `url(${url})`, 
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat"
@@ -34,15 +34,15 @@ function Countries(){
     const imageContainerStyle = { background: "white",height: "70px", width: "70px", borderRadius: "50%", overflow: "hidden"};
     
     return(
-        <div className="row justify-content-center">
+        <div className="row justify-content-center mb-5">
             
-            <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+            <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-5">
                 <h4 className="fs-2">Countries</h4>
                 <small>Explore different country's books, films, history and user posts</small>
                 <div className="row justify-content-center mt-4">
                     {countries.map((country, i)=>(
                     <div className="col-10 col-sm-6 col-md-6 col-lg-4 col-xl-4 mt-3" align="center">
-                        <div className="card" style={cardStyle}>
+                        <div className="card border border-rounded" style={cardStyle}>
                             <div style={getBannerStyle(country.banner_img)} className="d-flex align-items-end justify-content-center">
                                 <div style={imageContainerStyle} className="d-flex align-items-center justify-content-center">
                                     <img src={country.flag}  height="40" width="65" />

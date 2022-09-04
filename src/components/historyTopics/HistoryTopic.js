@@ -221,8 +221,8 @@ function commentsIsEmpty(){
 
     return(
         <div>
-        <div className="row justify-content-center">
-            <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+        <div className="row justify-content-center mb-5">
+            <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-5">
                 <h4 className="fs-2">Historical Topics</h4>
                 {/* <small>{historyTopic.first_name} {historyTopic.last_name}'s <span className="fw-bold">{historyTopic.name}</span></small> */}
                 <nav aria-label="breadcrumb mt-4">

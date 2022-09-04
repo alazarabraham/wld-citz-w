@@ -135,7 +135,7 @@ function UserPage({userId, getLoggedInUser}){
 
     function getAdminButtons(admin){
         if(admin == "Y"){
-            return <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+            return <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-5">
             <div className="row justify-content-end mt-4">
                 <div class="d-grid gap-2 d-flex justify-content-end">
                     <button className="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addLanguageModal">+ Language</button>
@@ -263,7 +263,7 @@ function UserPage({userId, getLoggedInUser}){
 
     return(
         <div>
-        <div className="row justify-content-center">
+        <div className="row justify-content-center mb-5">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div className="row justify-content-center">
                     {showEditProfileButton(user.id)}

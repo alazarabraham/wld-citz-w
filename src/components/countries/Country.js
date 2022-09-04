@@ -70,13 +70,13 @@ function Country(){
 
 
     return(
-        <div className="row justify-content-center">
-            <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+        <div className="row justify-content-center mb-5">
+            <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-5">
                 <h4 className="fs-2">Countries</h4>
                 <small>Explore <span className="fw-bold">{country.name}'s</span> books, films, and history</small>
                 <nav aria-label="breadcrumb mt-4">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/" className="text-decoration-none link-dark">Countries</a></li>
+                        <li class="breadcrumb-item"><a href="/countries" className="text-decoration-none link-dark">Countries</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{country.name}</li>
                     </ol>
                 </nav>
@@ -90,7 +90,7 @@ function Country(){
                         <img src={country.flag} className="w-100 mw-100"/>
                     </div>
                 </div>
-                <h1 className="lead mt-4">{countryBooks.length > 0 ? `Books from ${country.name}` :`No Books for ${country.name}`} </h1>
+                <h1 className="lead mt-4">{countryBooks.length > 0 ? `Books from ${country.name}` :`No Books from ${country.name}`} </h1>
                 <div className="row justify-content-center">
                     <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                     <Carousel className="mt-4 d-flex" responsive={responsive}>
@@ -100,7 +100,7 @@ function Country(){
                     </Carousel>
                     </div>
                 </div>
-                <h1 className="lead mt-4">{countryFilms.length > 0 ? `Films from ${country.name}` : `No Films for ${country.name}`} </h1>
+                <h1 className="lead mt-4">{countryFilms.length > 0 ? `Films from ${country.name}` : `No Films from ${country.name}`} </h1>
                 <div className="row justify-content-center">
                     <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                     <Carousel className="mt-4 d-flex" responsive={responsive}>

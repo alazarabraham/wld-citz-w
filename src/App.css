@@ -27,4 +27,8 @@
   word-wrap: break-word;
 }
 
+.buttonHover:hover{
+ transform: scale(1.05);
+ color: #dc3545;
+}
 /* .history-topics-preview:after { content: "..."; position :absolute; right:0; bottom: 2px;} */

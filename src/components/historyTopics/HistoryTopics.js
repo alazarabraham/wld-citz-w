@@ -93,8 +93,8 @@ function HistoryTopics({userId}){
     const textareaStyle = {height: "100px"};
     return(
         <div>
-        <div className="row justify-content-center">
-            <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+        <div className="row justify-content-center mb-5">
+            <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-5">
                 <h4 className="fs-2">Historical Topics</h4>
                 <small>Explore unique history topics posted by our users</small>
             </div>
