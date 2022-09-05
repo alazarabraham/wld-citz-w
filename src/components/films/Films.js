@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import {BsBook, BsHeartFill} from 'react-icons/bs';
+import {BsBook, BsHeartFill, BsPencilSquare} from 'react-icons/bs';
 import {IoPersonOutline} from 'react-icons/io5';
 import {AiOutlinePlusCircle} from 'react-icons/ai';
 import {BiFilterAlt} from 'react-icons/bi';
@@ -23,6 +23,17 @@ function Films({userId}){
     const [country_id, setCountry_id] = useState("");
     const [poster, setPoster] = useState("");
 
+      //book form fields for updates
+      const [id, setId] = useState("");
+      const [titleForUpdate, setTitleForUpdate] = useState("");
+      const [descriptionForUpdate, setDescriptionForUpdate] = useState("");
+      const [release_yearForUpdate, setRelease_yearForUpdate] = useState("");
+      const [language_idForUpdate, setLanguage_idForUpdate] = useState("");
+      const [country_idForUpdate, setCountry_idForUpdate] = useState("");
+      const [posterForUpdate, setPosterForUpdate] = useState("");
+      const [language, setLanguage] = useState("");
+      const [authorName, setAuthorName] = useState("");
+      const [countryName, setCountryName] = useState("");
   
 
     const getFilms = () =>{
@@ -53,7 +64,52 @@ function Films({userId}){
             console.log(error);
         })
     }
+    function setFilmFields(film){
+        console.log(film)
+        setId(film.id);
+        setTitleForUpdate(film.title);
+        setDescriptionForUpdate(film.description);
+        setRelease_yearForUpdate(film.release_year);
+        setLanguage_idForUpdate(film.language_id);
+        setCountry_idForUpdate(film.country_id);
+        setPosterForUpdate(film.poster);
+        setLanguage(film.language)
+        setCountryName(film.country_name)
+    }
+    const updateFilmSubmit = (e)=>{
+        e.preventDefault();
+        console.log({
+            title: titleForUpdate,
+            description: descriptionForUpdate,
+            release_year: release_yearForUpdate,
+            language_id: language_idForUpdate,
+            country_id: country_idForUpdate,
+            poster: posterForUpdate
+        })
+        if(userId != undefined){
+            setErrorMsg("");
+            axios.put("http://localhost:8080/films/editFilm", {
+                id: id,
+                title: titleForUpdate,
+                description: descriptionForUpdate,
+                release_year: release_yearForUpdate,
+                language_id: language_idForUpdate,
+                country_id: country_idForUpdate,
+                poster: posterForUpdate
+            }).then(function(response){
+                console.log(response);
+                setFilms([]);
+                getFilms();
+                document.getElementById('closeUpdateFilmModal').click();
+                snackbar.showMessage("Film successfully updated");
 
+            }).catch(function(error){
+                console.log(error);
+            });
+        }else if(userId == undefined){
+            setErrorMsg(<small className="text-danger text-center mt-3">Please login to make changes</small>)
+        }
+    };
     useEffect(()=> getFilms(), []);
     useEffect(()=> getLanguages(), []);
     useEffect(()=> getCountries(), []);
@@ -176,7 +232,7 @@ function Films({userId}){
             <div className="row justify-content-center">
             {films.map((film, i)=>(
                     <div className="col-10 col-sm-10 col-md-8 col-lg-6 col-xl-6 mt-3">
-                        <div class="card mt-4" style={cardStyle}>
+                        <div class="card  position-relative mt-4" style={cardStyle}>
                             <div class="card-body">
                                 <div className="row">
                                     <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -197,6 +253,9 @@ function Films({userId}){
                                     </div>
                                 </div>
                                 
+                            </div>
+                            <div className='position-absolute w-100'>
+                                <a className="text-decoration-none text-dark float-end px-2 py-1" type="button" data-bs-toggle="modal" data-bs-target="#updateAuthorModal" onClick={(e)=> setFilmFields(film)}><BsPencilSquare/></a>
                             </div>
                         </div>
                     </div> 
@@ -244,9 +303,10 @@ function Films({userId}){
                                 ))}
                             </select>
                         </div>
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Cover" id="floatingTextarea2" style={textareaStyle} value={poster} onChange={(e)=> setPoster(e.target.value)}></textarea>
-                            <label for="floatingTextarea2">Poster Image URL</label>
+                        <label for="floatingTextarea2">Cover Image URL</label>
+                        <div class="input-group mb-3">
+                                    <textarea style={textareaStyle} class="form-control" aria-label="With textarea" value={poster} onChange={(e)=> setPoster(e.target.value)}></textarea>
+                                    <span class="input-group-text" id="basic-addon2"><img className='px-2' src={poster} width="45"/></span>
                         </div>
                         {errorMsg}
                         <button className="w-100 mb-2 btn btn-lg rounded-4 btn-dark mt-5" type="submit">Save</button>                   
@@ -255,6 +315,64 @@ function Films({userId}){
                     </div>
                 </div>
         </div>
+        {/* Edit Film modal */}
+        <div className="modal fade" tabindex="-1" role="dialog" id="updateAuthorModal" aria-hidden="true">
+                        <div className="modal-dialog modal-lg" role="document">
+                            <div className="modal-content rounded-5 shadow">
+                            <div className="modal-header p-5 pb-4 border-bottom-0">
+                                <h2 className="fw-bold mb-0 d-block">Edit Film</h2>
+                                <button type="button" className="btn-close" id="closeUpdateFilmModal" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="px-5 pb-4">
+                            <small className="d-block">See any issues? Help us keep our data up to date</small>
+                            </div>
+                            <div className="modal-body p-5 pt-0">
+                                <form className="" onSubmit={updateFilmSubmit} >
+                                <div className="form-floating mb-3">
+                                    <input type="hidden" className="form-control rounded-4" id="floatingInput" placeholder="Country Name" value={id} onChange={(e)=> setId(e.target.value)}/>
+                                </div>
+                                <div className="form-floating mb-3">
+                                    <input type="text" className="form-control rounded-4" id="floatingInput" placeholder="Title" value={titleForUpdate} onChange={(e)=> setTitleForUpdate(e.target.value)}/>
+                                    <label for="floatingInput">Title</label>
+                                </div>
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Description" id="floatingTextarea2" style={textareaStyle} value={descriptionForUpdate} onChange={(e)=> setDescriptionForUpdate(e.target.value)}></textarea>
+                                    <label for="floatingTextarea2">Description</label>
+                                </div>
+                                <div className="form-floating mb-3 mt-4">
+                                    <input type="text" className="form-control rounded-4" id="floatingInput" placeholder="Capital" value={release_yearForUpdate} onChange={(e)=> setRelease_yearForUpdate(e.target.value)}/>
+                                    <label for="floatingInput">Release year</label>
+                                </div>
+                                <div className="form-floating mb-3">
+                                    <select defaultValue="Select Language" className="form-select" aria-label="Default select example" value={language_idForUpdate} onChange={(e)=> setLanguage_idForUpdate(e.target.value)}>
+                                        <option  selected value={language_idForUpdate}>{language}</option>
+                                        {languages.map((language, i)=>(
+                                        <option value={language.id}>{language.name}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                
+                                <div className="form-floating mb-3">
+                                    <select defaultValue="Select Author" className="form-select" aria-label="Default select example" value={country_idForUpdate} onChange={(e)=> setCountry_idForUpdate(e.target.value)}>
+                                        <option  selected value={country_idForUpdate}>{countryName}</option>
+                                        {countries.map((country, i)=>(
+                                        <option value={country.id}>{country.name}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <label className='form-label'>Cover Image URL</label>
+                                <div class="input-group mb-3">
+                                    <textarea style={textareaStyle} class="form-control" aria-label="With textarea" value={posterForUpdate} onChange={(e)=> setPosterForUpdate(e.target.value)}></textarea>
+                                    <span class="input-group-text" id="basic-addon2"><img className='px-2' src={posterForUpdate} width="45"/></span>
+                                </div>
+                                
+                                {errorMsg}
+                                <button className="w-100 mb-2 btn btn-lg rounded-4 btn-dark mt-3" type="submit">Save</button>                   
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                </div>
         </div>
         </div>
     )

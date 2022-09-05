@@ -29,11 +29,11 @@ function Login(){
     return(
         <div className="row justify-content-center mb-5 mt-5" style={loginFormStyle}>
             <div className="col-10 col-sm-8 col-md-5 col-lg-5 col-xl-4 border" align="center">
-                <GiBlackFlag size={25} className="mt-4"/>
+            <img className='mt-4 rounded' src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1280px-World_map_-_low_resolution.svg.png' width="75"/>
                 <h4 className="lead mt-4">Sign in</h4>
                 <small>
                     to continue to
-                    World <span className="main-logo fw-bold">&nbsp;Citizen</span>
+                    World Citizen
 
                 </small>
                 <form onSubmit={handleSubmit}>

@@ -59,7 +59,26 @@ function Home(){
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
+          items: 2
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
           items: 1
+        }
+      };
+      const flagResponsive = {
+        superLargeDesktop: {
+          // the naming can be any, depends on you.
+          breakpoint: { max: 4000, min: 3000 },
+          items: 9
+        },
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: 9
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: 2
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
@@ -73,7 +92,7 @@ function Home(){
             background:`linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,1)), url(${img})`,
             backgroundSize: "cover",
             height: "284px",
-            width: "278px",
+            width: "90%",
         }
     };
 
@@ -82,23 +101,32 @@ function Home(){
             background:`linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,1)), url(${img})`,
             backgroundSize: "cover",
             height: "177px",
-            width: "271px",
+            width: "90%",
             // backgroundPosition: "top"
         }
     };
 
     const width = {width: "98%"}
+    const flagStyle = {width: "43px", height: "28px"}
+
     const buttonAnimation = {transform: "scale(1.5)"}
     return(
         <div className="row justify-content-center mb-5">
             
             <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-5" >
-                <h1 className='fs-2'>World Citizen <img className='px-3' src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1280px-World_map_-_low_resolution.svg.png' width="75"/></h1>
+                <h1 className='fs-2'>World Citizen</h1>
                 <small>A space to share across cultures</small>
+                {/* <Carousel arrows={false} autoPlay={true} className="mt-4 d-flex" responsive={flagResponsive}>
+                        {countries.map((country, i)=>(
+                            <img src={country.flag} style={flagStyle} />
+                        ))}
+                </Carousel>      */}
                 <div style={width} class="d-flex justify-content-between">
                     <h1 className='lead mt-4'>Countries</h1>
                     <Link to={"/countries"} className='lead mt-4 text-decoration-none text-dark buttonHover'><small>See all Countries <AiFillCaretRight/> </small></Link>
-                </div>                    
+                </div>    
+                 
+         
                 <Carousel className="mt-4 d-flex" responsive={responsive}>
                         {countries.map((country, i)=>(
                             <Link className='text-decoration-none' to={`/country/${country.id}`}>

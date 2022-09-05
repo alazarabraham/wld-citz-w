@@ -11,7 +11,6 @@ import { set } from 'react-hook-form';
 function Countries({userId}){
     const snackbar = useSnackbar();
     const [countries, setCountries] = useState([]);
-    const [countryToEdit, setCountryToEdit] = useState({})
     const [errorMsg, setErrorMsg] = useState("");
     const [id, setId] = useState("");
     const [name, setName] = useState("");
